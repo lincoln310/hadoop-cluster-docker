@@ -22,10 +22,8 @@ mv /usr/local/ssh_config ~/.ssh/config && \
 sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
 #install hadoop 2.6.3
-# option 1:
-# RUN curl -s http://www.eu.apache.org/dist/hadoop/common/hadoop-2.6.3/hadoop-2.6.3.tar.gz | tar -xz -C /usr/local/
-# option 2:
-# download hadoop-2.x.x.tar.gz manully, and unzip it to files; refer line 11: ADD files/* /usr/local/
 RUN ln -s /usr/local/hadoop-2.6.3 /usr/local/hadoop && \
+#RUN curl -s http://www.eu.apache.org/dist/hadoop/common/hadoop-2.6.3/hadoop-2.6.3.tar.gz | tar -xz -C /usr/local/ \
+#RUN cd /usr/local && ln -s ./hadoop-2.6.3 hadoop \
 mv /usr/local/bashrc ~/.bashrc && \
 mv /usr/local/hadoop-env.sh /usr/local/hadoop/etc/hadoop/hadoop-env.sh 

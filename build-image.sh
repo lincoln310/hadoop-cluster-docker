@@ -13,8 +13,8 @@ fi
 # founction for delete images
 function docker_rmi()
 {
-	echo -e "\n\nsudo docker rmi kiwenlau/$1:$tag"
-	sudo docker rmi kiwenlau/$1:$tag
+	echo -e "\n\ndocker rmi kiwenlau/$1:$tag"
+	docker rmi kiwenlau/$1:$tag
 }
 
 
@@ -22,16 +22,16 @@ function docker_rmi()
 function docker_build()
 {
 	cd $1
-	echo -e "\n\nsudo docker build -t kiwenlau/$1:$tag ."
-	/usr/bin/time -f "real  %e" sudo docker build -t kiwenlau/$1:$tag .
+	echo -e "\n\ndocker build -t kiwenlau/$1:$tag ."
+	/usr/bin/time docker build -t kiwenlau/$1:$tag .
 	cd ..
 }
 
 
 echo -e "\ndocker rm -f slave1 slave2 master"
-sudo docker rm -f slave1 slave2 master
+docker rm -f slave1 slave2 master
 
-sudo docker images >images.txt
+docker images >images.txt
 
 if [ $image == "serf-dnsmasq" ]
 then
@@ -68,4 +68,4 @@ cat images.txt
 rm images.txt
 
 echo -e "\nimages after build"
-sudo docker images
+docker images
